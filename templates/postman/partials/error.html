@@ -1,0 +1,21 @@
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+
+<h3 class="h3 mb-3">{{ information.title }}</h3>
+{{ information.text|linebreaksbr }}
+
+{% if recipient %}
+    <p class="mt-3">
+        <small class="text-muted small">
+            <strong>{% trans 'Your message' %}:</strong>
+            <br>
+            {{ message|linebreaksbr }}
+        </small>
+        <br>
+        <br>
+        {{ alternativeContact.text|linebreaksbr }}
+        <a href="mailto:{{ recipient.email }}&subject={{ subject }}&body={{ message }}">
+            {{ recipient.email }}
+        </a>.
+    </p>
+{% endif %}

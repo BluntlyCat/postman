@@ -1,0 +1,31 @@
+{% extends 'master.html' %}
+{% load static %}
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+{% load sass_tags %}
+
+{% block css %}
+    <link rel="stylesheet" type="text/css" href="{% sass_src 'scss/postman.scss' %}"/>
+{% endblock %}
+
+{% block javascript %}
+    <script type="text/javascript" src="{% static 'js/Ajax.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/postman.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+    <h1 class="display-2 h1 my-4">Any questions?</h1>
+    <hr>
+
+    <div class="jumbotron mt-5" id="postman">
+        <h3 class="h3">
+            Feel free to contact us!
+        </h3>
+        <small class="small text-muted d-block mb-3">
+            {% trans 'Fields with an asterisk * are required' %}
+        </small>
+        <div id="formWrapper">
+            {% include 'postman/tags/postmanForm.html' %}
+        </div>
+    </div>
+{% endblock %}

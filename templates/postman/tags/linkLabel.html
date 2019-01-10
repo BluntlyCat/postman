@@ -1,0 +1,7 @@
+{% if privacy_url %}
+    <a href="{% url privacy_url %}" target="_blank">
+        {{ label }}
+    </a>
+{% else %}
+    {{ label }}
+{% endif %}

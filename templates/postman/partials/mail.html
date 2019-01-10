@@ -1,0 +1,42 @@
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+
+<div style="font-family: Helvetica, Arial, sans-serif; font-size: 14pt; background: rgba(255, 244, 230, 1); padding: 30px; border-radius: 4px;">
+    <h1 style="font-size: 16pt; color: rgba(60, 47, 47, 1); border-bottom: 5px solid rgba(138, 68, 66, 1); margin-bottom: 10px;">
+        {{ subject.text|linebreaksbr }}
+    </h1>
+
+    {% if company %}
+        <span style="color: rgba(60, 47, 47, 1); font-size: 14pt;">
+            <strong>{% trans 'Company' %}:</strong> {{ company }}
+        </span>
+        <br><br>
+    {% endif %}
+
+    <span style="color: rgba(60, 47, 47, 1); font-size: 14pt;">
+        <strong>{% trans 'Name' %}:</strong> {{ first_name }} {{ last_name }}
+    </span>
+    <br><br>
+
+    <span style="color: rgba(60, 47, 47, 1); font-size: 14pt;">
+        <strong>{% trans 'Email' %}:</strong>
+        <a style="color: rgba(60, 47, 47, 1); font-size: 14pt;" href="mailto:{{ email }}">{{ email }}</a>
+    </span>
+    <br><br>
+
+    {% if telephone %}
+        <span style="color: rgba(60, 47, 47, 1); font-size: 14pt;">
+            <strong>{% trans 'Telephone' %}:</strong> {{ telephone }}
+        </span>
+        <br><br><br>
+    {% endif %}
+
+    <span style="color: rgba(60, 47, 47, 1); font-size: 14pt;">
+        <strong>{% trans 'Message' %}:</strong>
+    </span>
+    <br>
+    <br>
+    <p style="color: rgba(60, 47, 47, 1); line-height: 1.6; font-size: 14pt;">
+        {{ message|linebreaksbr }}
+    </p>
+</div>
