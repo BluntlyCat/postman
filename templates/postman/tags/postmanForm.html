@@ -3,6 +3,11 @@
 {% load postman %}
 
 {% block form %}
+    {% if form.errors %}
+        <small class="form-text text-danger">
+            {{ form.errors }}
+        </small>
+    {% endif %}
     <form id="postmanAjaxForm" class="container-fluid" action='{% url 'postman:process_message' %}' method="post">
         {% csrf_token %}
         <div class="row">
@@ -99,7 +104,9 @@
                         </small>
                     {% endif %}
                 </div>
+            </div>
 
+            <div class="col-12">
                 <div class="form-check text-right">
                     <label class="form-check-label">
                         {{ form.privacy_accepted }} {% privacy_link_label form.privacy_accepted.label %}
@@ -110,10 +117,7 @@
                         </small>
                     {% endif %}
                 </div>
-            </div>
-
-            <div class="col-12 mt-4">
-                <div class="form-group text-right">
+                <div class="form-group mt-4 text-right">
                     <button type="submit" class="btn btn-primary" id="submitButton">
                         {% trans 'Send' %} <i id="mail-status" class="fa fa-envelope"></i>
                     </button>

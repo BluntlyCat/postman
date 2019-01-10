@@ -2,7 +2,7 @@ from django import forms
 from django.core.exceptions import ValidationError
 from django.conf import settings
 from django.utils.translation import ugettext as _
-from captcha.fields import CaptchaField, CaptchaTextInput
+from toolbox.forms import CaptchaModelForm
 from postman.models import Email, Recipient
 
 
@@ -35,11 +35,7 @@ class RecipientForm(forms.ModelForm):
             raise ValidationError(_('You can only set one recipient as default.'), code='Invalid')
 
 
-class EmailForm(forms.ModelForm):
-    captcha = CaptchaField(widget=CaptchaTextInput(attrs={
-        'class': 'form-control',
-    }))
-
+class EmailForm(CaptchaModelForm):
     class Meta:
         model = Email
 
