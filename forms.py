@@ -68,10 +68,10 @@ class EmailForm(CaptchaModelForm):
             }),
             'message': forms.Textarea(attrs={
                 'class': 'form-control',
-                'rows': 10,
+                'rows': 5,
             }),
             'privacy_accepted': forms.CheckboxInput(attrs={
-                'class': 'form-check-input',
+                'class': 'custom-control-input',
             }),
             'sent': forms.CheckboxInput(attrs={
                 'class': 'form-check-input',

@@ -2,10 +2,10 @@
 import json
 import logging
 
-from django.shortcuts import render, redirect, HttpResponse
+from django.shortcuts import render, HttpResponse
 from django.core.mail import EmailMessage
 from django.conf import settings
-from django.utils.text import mark_safe
+from django.utils.html import mark_safe
 from django.utils.translation import ugettext_lazy as _
 
 from postman.forms import EmailForm
@@ -84,7 +84,7 @@ def __message_sent_error(request, form, subject=''):
 
 
 def __form_error(request, form):
-    form = mark_safe(render(request, 'postman/tags/postmanForm.html', {
+    form = mark_safe(render(request, 'postman/tags/postman_form.html', {
         'form': form,
     }).content.decode('utf-8'))
 

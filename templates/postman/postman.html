@@ -13,7 +13,7 @@
     <script type="text/javascript" src="{% static 'js/postman.js' %}"></script>
 {% endblock %}
 
-{% block content %}
+{% block postman %}
     <h1 class="display-2 h1 my-4">Any questions?</h1>
     <hr>
 
@@ -24,8 +24,7 @@
         <small class="small text-muted d-block mb-3">
             {% trans 'Fields with an asterisk * are required' %}
         </small>
-        <div id="formWrapper">
-            {% include 'postman/tags/postmanForm.html' %}
-        </div>
+
+        {% include 'postman/tags/postman_form.html' %}
     </div>
 {% endblock %}

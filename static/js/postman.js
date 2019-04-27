@@ -1,7 +1,6 @@
 $(document).ready(function () {
     let form = $('#postmanAjaxForm');
     let formWrapper = $('#formWrapper');
-    let postman = $('#postman');
 
     function submit(event) {
         event.stopPropagation();
@@ -20,23 +19,27 @@ $(document).ready(function () {
             let mailData = data.json;
 
             if (mailData.success) {
-                postman.removeClass('alert-danger alert-warning alert-info');
-                postman.addClass('alert-success');
+                formWrapper.removeClass('alert-danger alert-warning alert-info');
+                formWrapper.addClass('alert-success');
                 formWrapper.html(mailData.form);
             } else if (mailData['formErrors'] || mailData['errors'] || mailData['alreadySent']) {
                 if (mailData['errors'])
-                    postman.addClass('alert-danger');
+                    formWrapper.addClass('alert-danger');
                 else if (mailData['formErrors'])
-                    postman.addClass('alert-warning');
+                    formWrapper.addClass('alert-warning');
                 else if (mailData['alreadySent'])
-                    postman.addClass('alert-info');
+                    formWrapper.addClass('alert-info');
 
                 formWrapper.html(mailData.form);
                 form = $('#postmanAjaxForm');
-                form.submit(submit);
+                form.on('submit', function (e) {
+                    submit(e);
+                });
             }
         });
     };
 
-    form.submit(submit)
+    form.on('submit', function (e) {
+        submit(e);
+    })
 });

@@ -5,7 +5,7 @@ from postman.forms import EmailForm
 register = template.Library()
 
 
-@register.inclusion_tag('postman/tags/postmanForm.html')
+@register.inclusion_tag('postman/tags/postman_form.html')
 def render_postman_form(form=None):
     return {
         'form': form if form else EmailForm()
