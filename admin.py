@@ -71,7 +71,7 @@ class EmailAdmin(GroupAdmin):
     fields = ['company', 'first_name', 'last_name', 'email', 'telephone', 'message', 'privacy_accepted',
               'received_on', 'sent']
 
-    list_display = ['email', 'first_name', 'last_name', 'privacy_accepted', 'received_on', 'sent']
+    list_display = ['pk', 'email', 'first_name', 'last_name', 'privacy_accepted', 'received_on', 'sent']
     list_filter = ['first_name', 'last_name', 'email', 'sent']
     search_fields = ['first_name', 'last_name', 'email']
     form = EmailForm

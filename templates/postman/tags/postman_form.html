@@ -2,14 +2,9 @@
 {% get_current_language as LANGUAGE_CODE %}
 {% load postman %}
 
-{% block form %}
-    <div id="formWrapper mt-4" class="p-1">
-        {% if form.errors %}
-            <small class="form-text text-danger">
-                {{ form.errors }}
-            </small>
-        {% endif %}
-        <form id="postmanAjaxForm" action='{% url '' %}' class="postman-form" method="post">
+<div id="formWrapper" class="mt-4 p-2">
+    {% block form %}
+        <form id="postmanAjaxForm" action='{% url 'postman:process_message' %}' class="postman-form" method="post">
             {% csrf_token %}
             <div class="form-group row">
                 <div class="col-12 col-lg-6">
@@ -124,5 +119,5 @@
                 </div>
             </div>
         </form>
-    </div>
-{% endblock %}
+    {% endblock %}
+</div>

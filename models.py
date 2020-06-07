@@ -41,3 +41,11 @@ class Email(models.Model):
     privacy_accepted = models.BooleanField(default=False)
     sent = models.BooleanField(default=False)
     received_on = models.DateTimeField(default=timezone.now)
+
+    def __str__(self):
+        return "%(pk)s: %(first_name)s %(last_name)s (%(email)s)" % {
+            'pk': self.pk,
+            'first_name': self.first_name,
+            'last_name': self.last_name,
+            'email': self.email,
+        }
