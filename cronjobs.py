@@ -15,3 +15,4 @@ class CleanEmails(CronJobBase):
         emails = Email.objects.filter(received_on__lte=half_year)
         for email in emails:
             email.delete()
+
