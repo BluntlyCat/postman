@@ -5,7 +5,7 @@ from postman.models import Email
 
 
 class CleanEmails(CronJobBase):
-    RUN_EVERY_MINS = 43200
+    RUN_EVERY_MINS = 1440
 
     schedule = Schedule(run_every_mins=RUN_EVERY_MINS)
     code = 'postman.clean_emails'
