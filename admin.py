@@ -9,7 +9,7 @@ except ImportError:
     ADMIN_MODEL = TranslationAdmin
 
 from postman.models import Information, Recipient, Email
-from postman.forms import RecipientForm, EmailForm
+from postman.forms import RecipientForm, EmailAdminForm
 
 
 # Register your models here.
@@ -74,7 +74,7 @@ class EmailAdmin(GroupAdmin):
     list_display = ['pk', 'email', 'first_name', 'last_name', 'privacy_accepted', 'received_on', 'sent']
     list_filter = ['first_name', 'last_name', 'email', 'sent']
     search_fields = ['first_name', 'last_name', 'email']
-    form = EmailForm
+    form = EmailAdminForm
 
 
 class InformationAdmin(TranslationGroupAdmin):
