@@ -108,3 +108,50 @@ class EmailForm(CaptchaModelForm):
             raise ValidationError(_('There is currently no mail server configured'), code='Invalid')
 
         return clean
+
+
+class EmailAdminForm(EmailForm):
+    class Meta:
+        widgets = {
+            'company': forms.TextInput(attrs={
+                'class': 'form-control',
+                'disabled': '',
+            }),
+            'first_name': forms.TextInput(attrs={
+                'class': 'form-control',
+                'disabled': '',
+            }),
+            'last_name': forms.TextInput(attrs={
+                'class': 'form-control',
+                'disabled': '',
+            }),
+            'email': forms.EmailInput(attrs={
+                'class': 'form-control',
+                'disabled': '',
+            }),
+            'telephone': forms.TextInput(attrs={
+                'class': 'form-control',
+                'type': 'tel',
+                'disabled': '',
+            }),
+            'message': forms.Textarea(attrs={
+                'class': 'form-control',
+                'rows': 5,
+                'disabled': '',
+            }),
+            'privacy_accepted': forms.CheckboxInput(attrs={
+                'class': 'custom-control-input',
+                'disabled': '',
+            }),
+            'sent': forms.CheckboxInput(attrs={
+                'class': 'form-check-input',
+                'disabled': '',
+            }),
+            'received_on': forms.DateTimeInput(attrs={
+                'class': 'form-check-input',
+                'disabled': '',
+            }),
+        }
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
